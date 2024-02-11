@@ -14,6 +14,7 @@ const manifest = defineManifest({
   action: {
     default_icon: "icons/icon128.png",
     default_title: "Commentable for Chrome",
+    default_popup: "src/popup/index.html",
   },
   background: {
     service_worker: "src/background/index.ts",
