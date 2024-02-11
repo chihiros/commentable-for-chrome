@@ -1,0 +1,17 @@
+{
+  "name": "commentable-for-chrome",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.23",
+    "@types/chrome": "^0.0.260",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}
