@@ -19,6 +19,12 @@ const manifest = defineManifest({
   background: {
     service_worker: "src/background/index.ts",
   },
+  content_scripts: [
+    {
+      matches: ["<all_urls>"],
+      js: ["src/content_scripts/textDisplay.ts"],
+    }
+  ],
   options_ui: {
     page: "src/options/index.html",
   },
