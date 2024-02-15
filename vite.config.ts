@@ -29,7 +29,7 @@ const manifest = defineManifest({
   options_ui: {
     page: "src/options/index.html",
   },
-  permissions: ["storage"],
+  permissions: ["storage", "tabs"],
 });
 
 export default defineConfig({

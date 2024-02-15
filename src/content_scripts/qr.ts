@@ -1,19 +1,35 @@
 import QRCode from 'qrcode';
 
-// QRコードを表示するcanvas要素を追加
-const qrCanvas = document.createElement('canvas');
-qrCanvas.id = 'qr-canvas';
-qrCanvas.style.position = 'fixed';
-qrCanvas.style.top = '15px';
-qrCanvas.style.right = '15px';
-qrCanvas.style.zIndex = '9999';
-qrCanvas.style.pointerEvents = 'none';
-document.body.appendChild(qrCanvas);
+function showQRCode(show: any) {
+  let qrCanvas = document.getElementById('qr-canvas');
+  if (show) {
+    if (!qrCanvas) {
+      qrCanvas = document.createElement('canvas');
+      qrCanvas.id = 'qr-canvas';
+      qrCanvas.style.position = 'fixed';
+      qrCanvas.style.top = '15px';
+      qrCanvas.style.right = '15px';
+      qrCanvas.style.zIndex = '9999';
+      document.body.appendChild(qrCanvas);
 
-const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+      QRCode.toCanvas(qrCanvas, 'https://commentable.fly.dev', function (error: any) {
+        if (error) console.error(error);
+        console.log('QRコードの生成に成功しました！');
+      });
+    }
+  } else {
+    if (qrCanvas) {
+      qrCanvas.remove();
+    }
+  }
+}
 
-// QRCodeライブラリを使用してcanvasにQRコードを生成
-QRCode.toCanvas(canvas, 'https://commentable.fly.dev', function (error) {
-  if (error) console.error(error);
-  console.log('QRコードの生成に成功しました！');
+chrome.storage.local.get('showQRCode', (data) => {
+  showQRCode(data.showQRCode);
 });
+
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+    showQRCode(request.showQRCode);
+  }
+);
