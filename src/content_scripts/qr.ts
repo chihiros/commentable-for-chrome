@@ -7,6 +7,7 @@ qrCanvas.style.position = 'fixed';
 qrCanvas.style.top = '15px';
 qrCanvas.style.right = '15px';
 qrCanvas.style.zIndex = '9999';
+qrCanvas.style.pointerEvents = 'none';
 document.body.appendChild(qrCanvas);
 
 const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
