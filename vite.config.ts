@@ -22,7 +22,8 @@ const manifest = defineManifest({
   content_scripts: [
     {
       matches: ["<all_urls>"],
-      js: ["src/content_scripts/textDisplay.ts"],
+      "exclude_matches": ["*://chat.openai.com/*"],
+      js: ["src/content_scripts/index.ts"],
     }
   ],
   options_ui: {
