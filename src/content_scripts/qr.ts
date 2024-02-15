@@ -1,7 +1,13 @@
 import QRCode from 'qrcode';
 
 // QRコードを表示するcanvas要素を追加
-document.body.innerHTML += '<canvas id="qr-canvas" style="position: fixed; top: 15px; right: 15px; z-index: 9999;"></canvas>';
+const qrCanvas = document.createElement('canvas');
+qrCanvas.id = 'qr-canvas';
+qrCanvas.style.position = 'fixed';
+qrCanvas.style.top = '15px';
+qrCanvas.style.right = '15px';
+qrCanvas.style.zIndex = '9999';
+document.body.appendChild(qrCanvas);
 
 const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
 
