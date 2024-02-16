@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
   });
 });
 
+// ルーム名をStorageに保存する
 document.addEventListener('DOMContentLoaded', (): void => {
   const toggleRoomButton = document.getElementById('toggleRoomButton') as HTMLButtonElement; // 明示的な型付け
   const roomNameInput = document.getElementById('room_name_input') as HTMLInputElement; // 明示的な型付け
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
   toggleRoomButton.addEventListener('click', (): void => {
     const roomName = roomNameInput.value.trim();
     if (roomName) {
+      chrome.storage.local.set({ 'roomName': roomName });
       startSocketConnection(roomName);
     } else {
       alert('ルーム名を入力してください。');

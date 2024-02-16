@@ -13,9 +13,12 @@ function showQRCode(show: any) {
       qrCanvas.style.pointerEvents = 'none';
       document.body.appendChild(qrCanvas);
 
-      QRCode.toCanvas(qrCanvas, 'https://commentable.fly.dev', function (error: any) {
-        if (error) console.error(error);
-        console.log('QRコードの生成に成功しました！');
+      chrome.storage.local.get('roomName', (data) => {
+        const roomName = data.roomName || '';
+        QRCode.toCanvas(qrCanvas, 'https://commentable.fly.dev/?room=' + roomName, function (error: any) {
+          if (error) console.error(error);
+          console.log('QRコードの生成に成功しました！');
+        });
       });
     }
   } else {
