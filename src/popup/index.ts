@@ -2,6 +2,7 @@ import '../styles/index.css';
 import '../styles/tailwind.css';
 import { startSocketConnection } from '../background/websocket';
 
+// QRコードの表示
 document.addEventListener('DOMContentLoaded', (): void => {
   const checkbox = document.querySelector('#bordered-checkbox-2') as HTMLInputElement; // 明示的な型付け
   checkbox.addEventListener('change', function (): void {
