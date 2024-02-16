@@ -10,7 +10,7 @@ function showQRCode(show: any) {
       qrCanvas.style.top = '15px';
       qrCanvas.style.right = '15px';
       qrCanvas.style.zIndex = '9999';
-      qrCanvas.style.userSelect = 'none';
+      qrCanvas.style.pointerEvents = 'none';
       document.body.appendChild(qrCanvas);
 
       QRCode.toCanvas(qrCanvas, 'https://commentable.fly.dev', function (error: any) {
